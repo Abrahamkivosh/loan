@@ -1843,13 +1843,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['loanId', 'currentStatus'],
+  data: function data() {
+    return {
+      loans: [],
+      value: {
+        approved: '2',
+        cancelled: '1'
+      }
+    };
+  },
+  methods: {
+    getData: function getData() {},
+    approveUser: function approveUser() {
+      var _this = this;
+
+      axios.put("/admin1/approve/".concat(this.loanId), this.value).then(function (response) {
+        if (_this.currentStatus == 0) {
+          console.log(_this.value.approved);
+        } else if (_this.currentStatus == 1) {} else {
+          alert("Already Approved");
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -37192,34 +37213,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "btn-group", attrs: { "data-toggle": "buttons" } },
-      [
-        _c("label", { staticClass: "btn btn-primary" }, [
-          _c("input", {
-            attrs: { type: "radio", name: "options", id: "option2" }
-          }),
-          _vm._v(" Approve\n    ")
-        ]),
-        _vm._v(" "),
-        _c("label", { staticClass: "btn btn-danger" }, [
-          _c("input", {
-            attrs: { type: "radio", name: "options", id: "option3" }
-          }),
-          _vm._v(" Cancel\n    ")
-        ])
-      ]
+  return _c("span", [
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-outline-secondary",
+        on: { click: _vm.approveUser }
+      },
+      [_vm._v("Approve")]
     )
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -49628,8 +49633,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/Laravel (1)/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/html/Laravel (1)/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/html/loan/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/html/loan/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -51,12 +51,21 @@
 
                                             @endswitch
                                         </td>
-                                        <td>
+                                        <td class=" d-flex">
+
 
                                                 <!-- Modal -->
-                                                <approve-loan></approve-loan>
 
-                                                <a  class="btn btn-primary" href="{{ "" }}" role="button" data-toggle="modal" data-target="#my-modal"> <i class="fas fa-eye">View</i> </a>
+                                                <!--  <approve-loan loan-id="{{ $loan->id }}" current-status ="{{ $loan->status }}" ></approve-loan>  -->
+                                                <form class=" d-flex pr-2" action="{{ route('approve',$loan->id) }}" method="post">
+                                                        @csrf
+                                                        {{ csrf_field() }}
+                                                        @method("PUT")
+                                                        <input type="text" hidden class="hidden" name="status" value="2" >
+                                                        <button type="submit" class="btn btn-primary">Approve</button>
+                                                </form>
+
+                                                <a  class="btn btn-primary pl-3" href="{{ "" }}" role="button" data-toggle="modal" data-target="#my-modal"> <i class="fas fa-eye">View</i> </a>
 
                                                 <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered" role="document">

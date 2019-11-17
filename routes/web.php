@@ -18,12 +18,9 @@ Route::prefix('admin1')->group(function () {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 
-    // Route::get('/register', 'AdminAuth\RegisterController@showRegistrationForm')->name('admin.register');
-    // Route::post('/register', 'AdminAuth\RegisterController@register')->name('admin.register.submit');
-    Route::group(['middleware' => ['auth:admin']], function () {
-
-        Route::get('/', 'AdminController@index')->name('admin.dashboard');
-        Route::get('loans', 'AdminLoanController@allLoans')->name('allLoans');
-
+   Route::group(['middleware' => ['auth:admin']], function () {
+   Route::get('/', 'AdminController@index')->name('admin.dashboard');
+   Route::get('loans', 'AdminLoanController@allLoans')->name('allLoans');
     });
+    Route::put('/approve/{id}', 'AdminLoanController@approve')->name('approve');
 });
