@@ -36,9 +36,9 @@
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header"></h6>
               <a class="collapse-item" href="{{ route('allLoans') }}">View All requests</a>
-              <a class="collapse-item" href="cards.html">Padding Requests </a>
+              {{--  <a class="collapse-item" href="cards.html">Padding Requests </a>
               <a class="collapse-item" href="cards.html">Cancelled Requests </a>
-              <a class="collapse-item" href="cards.html">Approved Requests </a>
+              <a class="collapse-item" href="cards.html">Approved Requests </a>  --}}
             </div>
           </div>
         </li>
@@ -71,7 +71,7 @@
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{{ route('admin.mail') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Mails</span></a>
         </li>

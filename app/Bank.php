@@ -26,5 +26,4 @@ class Bank extends Model
     {
         return $this->hasMany('App\Loan', 'bank_id', 'id');
     }
-
 }

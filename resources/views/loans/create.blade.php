@@ -25,11 +25,11 @@
                             <div class="input-group-prepend">
                               <label class="input-group-text" for="inputGroupSelect01">Select Bank</label>
                             </div>
-                            <select class="custom-select" name="bank" id="inputGroupSelect01">
+                            <select  class="my-bank custom-select" name="bank" id="inputGroupSelect01" >
                                     <option selected>Choose bank you want to get loan from</option>
                               @foreach ($banks as $bank)
 
-                              <option value="{{ $bank->id }}">{{ $bank->name }}</option>
+                              <option   value="{{ $bank->id }}">{{ $bank->name }}</option>
 
                               @endforeach
                             </select>
@@ -55,3 +55,8 @@
       </div>
 
 @stop
+
+@section('script')
+    <script src="{{ asset('js/app.js') }}"></script>
+@stop
+

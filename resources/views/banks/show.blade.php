@@ -11,7 +11,6 @@
               <a href="{{ route('home') }}">Dashboard</a>
             </li>
             <li class="breadcrumb-item active">Single Bank</li>
-            <a href="{{ route('banks.index') }}"><li class="breadcrumb-item pull-right float-right "><button type="button" class="btn btn-outline-primary"> <i class="fas fa-backward    "></i> </button></li></a>
           </ol>
 
           <!-- Page Content -->
@@ -19,20 +18,58 @@
           <p>
               <div class="jumbotron jumbotron-fluid">
                   <div class="container">
+                        <a href="{{ route('banks.index') }}" class="btn btn-outline-primary pull-right float-right align-baseline ">
+                                <i class="fas fa-backward    ">Back</i>
+                        </a>
+
                       <h1 class="display-3">{{ $bank->name }}</h1>
                       <p class="lead">{{ $bank->description }} </p>
                       <hr class="my-2">
 
                       <p class="lead">
-                            <ul class="list-group">
-                                 <ul class="list-group col-6 offset-1 pt-4 ">
-                                        <a class="list-group-item list-group-item-action active" > <i class="fas fa-credit-card    "></i> Accounts</a>
-                                        @foreach ($bank->accounts as $acc)
-                                              <a class="list-group-item list-group-item-action bg-bottom bg-aqua " href="#"> <i class="fab fa-credit-card-front    "></i> {{ $acc->number }}</a>
+                           <div class="card">
+                               <div class="card-header">
+                                   account detials
+                               </div>
+                               <div class="card-body">
+                                   <h5 class="card-title">Please Read carefully before you request  a loan</h5>
 
-                                        @endforeach
-                                    </ul>
-                                </ul>
+
+                                   <p class="card-text">
+                                       <table class="table table-hover table-responsive table-bordered">
+                                           <thead class="thead-light">
+                                               <tr>
+                                                   <th> <i class="fas fa-credit-card    "></i> credit Card Number</th>
+                                                   <th> <i class="fas fa-money-bill    "></i> Maximum Amount to borrow</th>
+                                                   <th> <i class="fas fa-money-bill    "></i> Minimum Amount to borrow</th>
+                                                   <th> <i class="fas fa-procedures    ">Action</i> </th>
+                                               </tr>
+                                           </thead>
+                                           <tbody>
+                                               @foreach ($bank->accounts as $acc)
+                                               <tr>
+                                                   <td>{{ $acc->creditCardNumber }}</td>
+                                                   <td>{{ $acc->max }}</td>
+                                                   <td>{{ $acc->min }}</td>
+                                                   <td> <a name="" id="" class="btn btn-primary" href="{{ route('loans.create') }}" role="button">Take loan</a> </td>
+
+                                               </tr>
+                                               @endforeach
+                                           </tbody>
+                                           <tfoot>
+                                               <tr>
+                                                   <th>#</th>
+                                               </tr>
+                                           </tfoot>
+                                       </table>
+                                   </p>
+
+
+                               </div>
+                               <div class="card-footer">
+                                   Footer
+                               </div>
+                           </div>
 
                       </p>
                   </div>

@@ -8,10 +8,10 @@ use Faker\Generator as Faker;
 $factory->define(Account::class, function (Faker $faker) {
     return [
         'bank_id'=>function(){return App\Bank::all()->random();},
-        'number'=>$faker ->numberBetween(100000,9999000),
+        'creditCardNumber'=>$faker->creditCardNumber,
         'amount'=>$faker ->numberBetween(10900,999000),
-        'max'=>$faker ->numberBetween(100,90000),
-        'min'=>$faker ->numberBetween(100,99000),
-        'type'=>$faker->randomElement(['Loan','PataLoan'])
+        'max'=>$faker ->numberBetween(10000,90000),
+        'min'=>$faker ->numberBetween(1000,9999),
+        'creditCardType'=>$faker->creditCardType
     ];
 });

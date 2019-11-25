@@ -17,9 +17,9 @@ class CreatePayablesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('bank_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
-            $table->integer('number');
+            $table->integer('creditCardNumber');
             $table->integer('amount')->nullable()->default(0);
-            $table->string('type', 100)->default('Normal');
+            $table->string('creditCardType', 100)->default('Normal');
             $table->timestamps();
         });
     }

@@ -82,6 +82,6 @@ class BankController extends Controller
      */
     public function destroy(Bank $bank)
     {
-        //
+
     }
 }

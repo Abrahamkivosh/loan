@@ -12,7 +12,7 @@
         <span>All Backs</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('loans.create') }}">
+      <a class="nav-link" href="{{ route('banks.index') }}">
 
         <i class="fa fa-credit-card" aria-hidden="true"></i>
         <span> Request Loan</span></a>
@@ -36,14 +36,24 @@
               <span> Terms And Conditions</span></a>
     </li>
         <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                  <i class="fa fa-sign-out" aria-hidden="true"></i>
-                  <span> Sign Out</span></a>
+
+            <a  class="nav-link" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+        <i class="fa fa-sign-out" aria-hidden="true"></i>
+        <span> Sign Out</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="tables.html">
+            <a class="nav-link" href="/">
                 <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>
                 <span> Visit Welcome </span></a>
         </li>
 
   </ul>
+
+
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+

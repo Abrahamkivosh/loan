@@ -1,6 +1,6 @@
 
 require('./bootstrap');
-
+require('./loanrequest');
 window.Vue = require('vue');
 
 
@@ -11,4 +11,7 @@ Vue.component('approve-loan', require('./components/Approve.vue').default);
 
 const app = new Vue({
     el: '#app',
+});
+new Vue({
+    el:"#wrapper",
 });

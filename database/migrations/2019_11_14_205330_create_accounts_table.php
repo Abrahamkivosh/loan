@@ -19,11 +19,11 @@ class CreateAccountsTable extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('bank_id')->unsigned();
-            $table->integer('number');
+            $table->integer('creditCardNumber');
             $table->integer('amount')->nullable()->default(0);
             $table->integer('max')->nullable()->default(0);
             $table->integer('min')->nullable()->default(0);
-            $table->string('type', 100)->default('Normal');
+            $table->string('creditCardType', 100)->default('Normal');
             $table->timestamps();
         });
     }

@@ -23,13 +23,16 @@
         <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
     </head>
-    @include('includes.message')
+
 
 <body id="page-top">
 
   <!-- Page Wrapper -->
  <div id="app" >
+        @include('includes.message')
+
         <div id="wrapper">
+
 
                 <!-- Sidebar -->
                 @include('includes.sidebaradmin')

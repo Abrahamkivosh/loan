@@ -51,9 +51,10 @@ class AdminController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
+    public function show($id)
     {
-        //
+        $admin = Admin::findOrfail($id);
+        return view('admin/profile/show', compact('admin'));
     }
 
     /**
@@ -62,9 +63,10 @@ class AdminController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
+    public function edit($id)
     {
-        //
+        $admin = Admin::findOrfail($id);
+        return view('admin/profile/edit', compact('admin'));
     }
 
     /**
@@ -74,9 +76,21 @@ class AdminController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, $id)
     {
-        //
+        request()->validate(array(
+            'name' => 'required',
+            'phone' =>"max:15",
+            'password'=>"max:20|min:8|confirmed"
+        ));
+        $re = Admin::where('id', $id)
+                    ->update(
+                        [
+                            $request->all()
+                        ]
+                    );
+
+                    return redirect()->route('profile.show',$id);
     }
 
     /**
@@ -85,8 +99,9 @@ class AdminController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
+    public function destroy($id)
     {
-        //
+        $dd = Admin::where('id', $id)->delete();
+        return redirect()->route('admin.dashboard');
     }
 }

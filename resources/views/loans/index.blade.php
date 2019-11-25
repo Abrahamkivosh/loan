@@ -21,7 +21,7 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                           <thead>
                             <tr>
-                              <th>Back Name</th>
+                              <th>Bank Name</th>
                               <th>Amount</th>
                               <th>Status</th>
                               <th>Action</th>
@@ -29,7 +29,7 @@
                           </thead>
                           <tfoot>
                                 <tr>
-                                    <th>Back Name</th>
+                                    <th>Bank Name</th>
                                     <th>Amount</th>
                                     <th>Status</th>
                                     <th>Action</th>

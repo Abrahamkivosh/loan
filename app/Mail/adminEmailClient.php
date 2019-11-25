@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class adminMail extends Mailable
+class adminEmailClient extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,12 +17,17 @@ class adminMail extends Mailable
      *
      * @return void
      */
-    public $message ;
-    public $subject ;
-    public function __construct($message,$subject)
+    public $subject;
+    public $message;
+    public $bank;
+    public function __construct( $subject, $message , $bank)
     {
+        $this->subject = $subject;
         $this->message = $message;
-         $this->subject = $subject;
+
+        $this->bank = $bank;
+
+
     }
 
     /**
@@ -32,11 +37,14 @@ class adminMail extends Mailable
      */
     public function build()
     {
-        $message = $this->message;
         $subject = $this->subject;
+        $message = $this->message;
 
-        return $this->from(Auth::user()->email, Auth::user()->name)
-        ->subject($subject)
-        -> markdown('adminMail',compact('message'));
+        $bank = $this->bank;
+        $from = $this->from;
+        return $this->from(Auth::user()->email,Auth::user()->name)
+        ->markdown('adminEmailClient',compact('message','bank'))
+
+        ->subject($subject);
     }
 }

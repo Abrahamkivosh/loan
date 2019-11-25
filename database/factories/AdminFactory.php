@@ -9,10 +9,13 @@ $factory->define(Admin::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'bank_id'=>function(){return App\Bank::all()->random();},
-        'email' => $faker->unique()->safeEmail,
+        'email' => $faker->unique()->freeEmail,
         'phone'=>$faker->phoneNumber,
         'email_verified_at' => now(),
         'password' => Hash::make('password'),
         'remember_token' => Str::random(10),
     ];
+
+
+
 });
